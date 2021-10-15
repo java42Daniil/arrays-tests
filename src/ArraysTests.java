@@ -67,6 +67,10 @@ class ArraysTests {
 		int actual[] = new int[4];
 		int expected[] = {1, 2, 4, 5};
 		//TODO make sure the following assert will pass using System.arraycopy
+		/* V.R.
+		 * The name 'ar1' isn't suitable.
+		 * May be index?
+		 */
 		int ar1 = 2;
 		System.arraycopy(ar, 0, actual, 0, ar1);
 		System.arraycopy(ar, ar1 +1, actual, ar1, ar.length-ar1-1);
@@ -75,6 +79,9 @@ class ArraysTests {
 	@Test
 	void systemArrayInsert() {
 		int ar[] = {1, 2, 3, 4, 5};
+		/* V.R.
+		 * The name isn't good
+		 */
 		int i = 3;
 		int actual[] = Arrays.copyOf(ar, ar.length+1);
 		int expected[] = {1, 2, 3, -10, 4, 5};
@@ -83,6 +90,7 @@ class ArraysTests {
 		System.arraycopy(actual, i, actual, i + 1, actual.length -i -1);
 		actual[i] = -10;
 		assertArrayEquals(expected, actual);
+		
 	}
 	@Test
 	void arraysCopyOf() {
@@ -107,4 +115,8 @@ class ArraysTests {
 		System.out.println(ar1);
 	    System.out.println(ar2);
 	}
+	/* V.R.
+	 * The last 3 tests havn't assert and use println.
+	 * HW requires to execute tests with assert and without println.
+	 */
 }
