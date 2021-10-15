@@ -67,7 +67,7 @@ class ArraysTests {
 		int actual[] = new int[4];
 		int expected[] = {1, 2, 4, 5};
 		//TODO make sure the following assert will pass using System.arraycopy
-		int ar1 = 2;
+		int ar1 = 2; //[YG] not good variable name. indDeleted - would be much better
 		System.arraycopy(ar, 0, actual, 0, ar1);
 		System.arraycopy(ar, ar1 +1, actual, ar1, ar.length-ar1-1);
 		assertArrayEquals(expected, actual);
@@ -75,7 +75,7 @@ class ArraysTests {
 	@Test
 	void systemArrayInsert() {
 		int ar[] = {1, 2, 3, 4, 5};
-		int i = 3;
+		int i = 3; //[YG] indInsert would be better name
 		int actual[] = Arrays.copyOf(ar, ar.length+1);
 		int expected[] = {1, 2, 3, -10, 4, 5};
 		//TODO make sure the following assert will pass using System.arraycopy
@@ -89,6 +89,8 @@ class ArraysTests {
 		//TODO write test for  Arrays.copyOf functionality according to the doc
 		int ar[] = {1, 2, 3, 4, 5};
 		int[] ar1 = Arrays.copyOf(ar, 2);
+		//[YG] println is not a test. You should get used to apply assert statements instead of println. Usually, an Unit test shoud be ran with no additional displayed info
+		//[YG] there should be at least three assert statements for three values of the length parameter: the same length as in ar, less and greater than ar.length
 		System.out.println(ar1);
 	}
 	@Test
@@ -96,6 +98,7 @@ class ArraysTests {
 		//TODO write test for  Arrays.copyOfRage functionality according to the doc
 		int ar[] = {1, 2, 3, 4, 5};
 		int[] ar1 = Arrays.copyOfRange(ar, 2, 3);
+		//[YG] println is not a test. You should get used to apply assert statements instead of println. Usually, an Unit test shoud be ran with no additional displayed info
 		System.out.println(ar1);
 	}
 	@Test 
@@ -104,6 +107,8 @@ class ArraysTests {
 		int ar[] = {1, 2, 3, 4, 5};
 		int ar1 = Arrays.binarySearch(ar, 2); 
 		int ar2 = Arrays.binarySearch(ar, 3); 
+		//[YG] println is not a test. You should get used to apply assert statements instead of println. Usually, an Unit test shoud be ran with no additional displayed info
+		//[YG] there should be at least two assert statements for two cases: key (second parameter) does exist in the array and doesn't
 		System.out.println(ar1);
 	    System.out.println(ar2);
 	}
