@@ -1,5 +1,7 @@
 import  static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 class ArraysTests {
@@ -41,7 +43,7 @@ class ArraysTests {
 		assertEquals(10, ar2[1]);
 	}
 	@Test
-	void systemArrayCopy() {
+	void systemArrayCopy1() {
 		int ar[] = new int[5];
 		int ar1[] = {1, 2, 3};
 		int ar2[] = {4, 5};
@@ -49,6 +51,60 @@ class ArraysTests {
 		System.arraycopy(ar1, 0, ar, 0, ar1.length);
 		System.arraycopy(ar2, 0, ar, 3, ar2.length);
 		assertArrayEquals(expected, ar);
-		
+	}
+	@Test 
+	void systemArrayShift() {
+		int ar[] = {1, 2, 3, 4, 5};
+		System.arraycopy(ar, 1, ar, 0, ar.length -1);//{2, 3, 4, 5, 5};
+		ar[ar.length -1] = 0;
+		int expected[] = {2, 3, 4, 5, 0};
+		assertArrayEquals(expected, ar);
+	}
+	//////////////homework
+	@Test
+	void systemArrayDelete() {
+		int ar[] = {1, 2, 3, 4, 5};
+		int actual[] = new int[4];
+		int expected[] = {1, 2, 4, 5};
+		//TODO make sure the following assert will pass using System.arraycopy
+		int ar1 = 2;
+		System.arraycopy(ar, 0, actual, 0, ar1);
+		System.arraycopy(ar, ar1 +1, actual, ar1, ar.length-ar1-1);
+		assertArrayEquals(expected, actual);
+	}
+	@Test
+	void systemArrayInsert() {
+		int ar[] = {1, 2, 3, 4, 5};
+		int i = 3;
+		int actual[] = Arrays.copyOf(ar, ar.length+1);
+		int expected[] = {1, 2, 3, -10, 4, 5};
+		//TODO make sure the following assert will pass using System.arraycopy
+		//ar = Arrays.copyOf(ar, ar.length+1);
+		System.arraycopy(actual, i, actual, i + 1, actual.length -i -1);
+		actual[i] = -10;
+		assertArrayEquals(expected, actual);
+	}
+	@Test
+	void arraysCopyOf() {
+		//TODO write test for  Arrays.copyOf functionality according to the doc
+		int ar[] = {1, 2, 3, 4, 5};
+		int[] ar1 = Arrays.copyOf(ar, 2);
+		System.out.println(ar1);
+	}
+	@Test
+	void arrayCopyOfRange() {
+		//TODO write test for  Arrays.copyOfRage functionality according to the doc
+		int ar[] = {1, 2, 3, 4, 5};
+		int[] ar1 = Arrays.copyOfRange(ar, 2, 3);
+		System.out.println(ar1);
+	}
+	@Test 
+	void arraysBinarySearch() {
+		//TODO write test for  Arrays.copyOfBinarySearch functionality according to the doc
+		int ar[] = {1, 2, 3, 4, 5};
+		int ar1 = Arrays.binarySearch(ar, 2); 
+		int ar2 = Arrays.binarySearch(ar, 3); 
+		System.out.println(ar1);
+	    System.out.println(ar2);
 	}
 }
